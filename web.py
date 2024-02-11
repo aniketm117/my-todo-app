@@ -15,11 +15,11 @@ st.subheader("This is my todo app.")
 st.write("Cold-Run")
 
 for index, todo in enumerate(todos):
-    checkbox = st.checkbox(todo, key=todo)
+    checkbox = st.checkbox(todo[:-1], key=todo[:-1])
     if checkbox:
         todos.pop(index)
         functions.write_todos(todos)
-        del st.session_state[todo]
+        del st.session_state[todo[:-1]]
         st.experimental_rerun()
 
 st.text_input(label="Todo Item", placeholder="Add new todo...",
