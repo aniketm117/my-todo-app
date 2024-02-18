@@ -11,15 +11,17 @@ def add_todo():
 
 
 st.title("My Todo App")
-st.subheader("This is my todo app.")
-st.write("Cold-Run")
+st.subheader("Add items to do and remember stuff.")
+
+cnt = 0
 
 for index, todo in enumerate(todos):
-    checkbox = st.checkbox(todo[:-1], key=todo[:-1])
+    cnt += 1
+    checkbox = st.checkbox(todo[:-1], key=f"{todo[:-1]}_{cnt}")
     if checkbox:
         todos.pop(index)
         functions.write_todos(todos)
-        del st.session_state[todo[:-1]]
+        del st.session_state[f"{todo[:-1]}_{cnt}"]
         st.experimental_rerun()
 
 st.text_input(label="Todo Item", placeholder="Add new todo...",
