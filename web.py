@@ -28,11 +28,10 @@ for index, todo in enumerate(todos):
         del st.session_state[f"{todo[:-1]}-{count}"]
         st.experimental_rerun()
 
+st.text_input(label="Todo Item", placeholder="Add new todo",
+              on_change=add_todo, key='new_todo')
+
 "stats-for-nerds"
 
 for the_todo in st.session_state.items():
     the_todo
-
-
-st.text_input(label="Todo Item", placeholder="Add new todo",
-              on_change=add_todo, key='new_todo')
